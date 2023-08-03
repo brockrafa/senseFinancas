@@ -20,8 +20,7 @@ function Transacoes({setPagina}){
 
     function filtrar(filtro){
         setfiltroPrincipal(filtro)
-        let desp = JSON.parse(localStorage.getItem('sense_db'))
-        desp = desp ?? []
+        let desp = getTransacoes()
 
         if(filtro == 'todas'){
             if(categoria!=''){
@@ -64,12 +63,12 @@ function Transacoes({setPagina}){
             const categoriasDistintas = [...new Set(desp.map(item => capitalize(item.categoria)))];
             setCategorias(categoriasDistintas)
         }
-        
     }
 
     function getTransacoes(){
         let desp = JSON.parse(localStorage.getItem('sense_db'))
         desp = desp ?? []
+        desp.sort((a, b) => b.id - a.id);
         return desp
     }
 
@@ -84,7 +83,7 @@ function Transacoes({setPagina}){
 
     useEffect(()=>{
 
-        if(filtroPrincipal == 'todas'){
+        
             let valorTotalEntrada = despesas.filter((d)=> d.tipo == 'Receita').reduce((acumulado,despesa)=>{
                 let val = despesa.valor.replace(',','.')
                 return parseFloat(acumulado) + parseFloat(val)
@@ -103,7 +102,6 @@ function Transacoes({setPagina}){
             let saldo = (valorTotalEntrada - valorTotalSaida).toFixed(2).toString()
             setTotalSaldo(saldo.replace('.',','))
 
-        }
     },[despesas])
 
     useEffect(()=>{
@@ -139,7 +137,7 @@ function Transacoes({setPagina}){
 
             <div className={style.dadosIndicadores}>
                 <div className={style.dadoIndicador}>
-                    <p>Receitas</p>
+                    <p>Entradas</p>
                     <span>R${totalEntrada}</span>
                 </div>
                 <div className={style.dadoIndicador}>

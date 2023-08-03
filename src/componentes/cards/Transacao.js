@@ -17,7 +17,6 @@ function Transacao({id,titulo,tipo,categoria,valor,data,HandleBtnExcluir}){
                     (
                         <img src="/img/moedas_icone.png" alt="" />
                     )
-            
                 }
                 
             </div>
