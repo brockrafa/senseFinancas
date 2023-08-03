@@ -1,0 +1,52 @@
+.barraNavegacao{
+    height: 100vh;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #5901B0;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.logo{
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.logo img{
+    width: 80px;
+    border-radius: 50%;
+}
+.logo span{
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 20px;
+}
+.menu{
+    flex-grow: 1;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.menu a{
+   display: block;
+   padding: 20px 40px;
+   color: rgb(255, 255, 255);
+   font-weight: bold;
+}
+.menu a:hover{
+    background-color: #5000A0;
+ }
+ .rodape{
+    text-align: center;
+    font-size: 12px;
+    padding: 20px 0;
+ }
+ .active{
+    background-color: #5000A0;
+ }

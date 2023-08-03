@@ -1,0 +1,16 @@
+.containerMensagem{
+    width: 100%;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+.success{
+    background-color: rgba(0, 128, 0, 0.616);
+}
+
+.error{
+    background-color: rgb(170, 3, 3);
+}

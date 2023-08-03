@@ -1,0 +1,76 @@
+.formGroup{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+    position: relative;
+}
+.formGroup label{
+    font-size: 17px;
+    font-weight: bold;
+    color: rgb(37, 37, 37);
+}
+.formGroup input{
+    font-size: 15px;
+    border: none;
+    border-bottom: 1px solid rgb(148, 148, 148);
+    margin-top: 5px;
+    outline: none;
+    padding: 5px 0;
+    color: gray;
+}
+.formGroup input::placeholder{
+    font-size: 14px;
+    color: rgb(219, 219, 219);
+}
+.formGroup div{
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+.formGroup div input[type=radio]{
+    appearance: none;
+    border: 2px solid #5901B0;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    outline: none;
+    background-clip: content-box;
+    padding: 2px;
+    margin-bottom: 3px;
+    margin-right: 5px;
+}
+.formGroup div label{
+    margin-right: 40px;
+    font-weight: 500;
+    font-size: 15px;
+}
+.formGroup div input[type=radio]:checked {
+    background-color: #5901B0;
+}
+.iconeInputValor{
+    position: absolute;
+    top: 30px;
+    color: rgb(182, 182, 182);
+    font-size: 14px;
+}
+input.inputComIcone{
+    padding-left: 23px;
+}
+.btnSubmit{
+    background: #5901B0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 0 auto;
+}
+.btnSubmit:hover{
+    background: #6e00db;
+}

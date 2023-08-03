@@ -1,0 +1,39 @@
+.tabelaTransacoes{
+    margin-top: 30px;
+}
+.tabelaTransacoes table{
+    width: 100%;
+    border-collapse: collapse;
+    border-right: 1px solid rgba(168, 168, 168, 0.192);
+    border-left: 1px solid rgba(168, 168, 168, 0.192);
+}
+.tabelaTransacoes table thead{
+    border-bottom: 1px solid rgba(168, 168, 168, 0.377);
+    background: rgb(0, 115, 168);
+}
+.tabelaTransacoes table th{
+    text-align: left;
+    color: white;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+.tabelaTransacoes table tr td{
+    padding: 20px 20px;
+    border-bottom: 1px solid rgba(168, 168, 168, 0.089);
+    font-size: 14px;
+}
+
+.tabelaTransacoes table tr td:nth-child(1){
+   min-width: 100px;
+}
+
+.tabelaTransacoes table tr td svg{
+    cursor: pointer;
+    margin: 0 10px 0 0;
+}
+.tabelaTransacoes table tr td svg:nth-child(1){
+    color: rgb(53, 181, 255);
+}
+.tabelaTransacoes table tr td svg:nth-child(2){
+    color: rgb(148, 10, 10);
+}

@@ -1,0 +1,26 @@
+.titulo{
+    text-align: center;
+    margin-top: 50px;
+    color: rgb(66, 66, 66);
+}
+.containerIndicadores{
+    margin-top: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.cardIndicador{
+    width: 45%;
+    background-color: rgb(33, 93, 117);
+    padding: 20px;
+    color: white;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.cardIndicador  h3{
+    text-align: center;
+}
