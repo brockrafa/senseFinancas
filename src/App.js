@@ -1,4 +1,4 @@
-import {BrowserRouter as Router,Routes, Route, Link} from 'react-router-dom'
+import {BrowserRouter as Router,Routes, Route} from 'react-router-dom'
 import {useEffect, useState} from 'react'
 
 import NovaDespesa from './pages/NovaDespesa'
@@ -33,6 +33,7 @@ function App() {
               <Route path='/' element={<Transacoes setPagina={setPagina}/>}></Route>
               <Route path='/despesas/create' element={<NovaDespesa  setPagina={setPagina} />} ></Route>
               <Route path='/transacao/editar/:id' element={<EditarTransacao  setPagina={setPagina} />} ></Route>
+              <Route path="*" element={ <Transacoes></Transacoes> }/>
         </Routes>
       </Container>
     </Router>
