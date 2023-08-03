@@ -16,7 +16,6 @@ function Mensagem({texto,status}){
         const timer = setTimeout(()=>{
             setVisivel(false)
         },4000)
-        console.log('aqui')
         return ()=>clearTimeout(timer)
 
     },[texto])

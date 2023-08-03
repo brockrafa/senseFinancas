@@ -38,7 +38,14 @@
 }
 .areaAcoes{
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+}
+.areaAcoes .btnFiltroCategoria select{
+    border: 1px solid #5901B0;
+    padding: 10px 15px;
+    border-radius: 10px;
+    color: #5901B0;
+    outline: none;
 }
 .areaAcoes a{
     background: #5901B0;

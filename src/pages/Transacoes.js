@@ -10,6 +10,8 @@ function Transacoes({setPagina}){
     const [despesas,setDespesas] = useState([])
     const [mensagem,setMensagem] = useState()
     const [filtroPrincipal,setfiltroPrincipal] = useState('todas')
+    const [categorias,setCategorias] = useState([])
+    const [categoria,setCategoria] = useState('')
     const [totalEntrada,setTotalEntrada] = useState('N/A')
     const [totalSaldo,setTotalSaldo] = useState('N/A')
     const [totalSaidas,setTotalSaidas] = useState('N/A')
@@ -22,9 +24,17 @@ function Transacoes({setPagina}){
         desp = desp ?? []
 
         if(filtro == 'todas'){
+            if(categoria!=''){
+                desp = desp.filter((d)=> d.categoria.toLowerCase() == categoria.toLowerCase())
+            }
             setDespesas(desp)
             return 1
         }
+
+        if(categoria!=''){
+            desp = desp.filter((d)=> d.categoria.toLowerCase() == categoria.toLowerCase())
+        }
+
         desp = desp.filter((d)=> d.tipo.toLowerCase() == filtro.toLowerCase())
         setDespesas(desp)
     }
@@ -39,12 +49,20 @@ function Transacoes({setPagina}){
         setMensagem('Transação excluida com sucesso')
     }
 
+    function getCategorias(){
+        let desp = JSON.parse(localStorage.getItem('sense_db'))
+        const categoriasDistintas = [...new Set(desp.map(item => item.categoria))];
+        setCategorias(categoriasDistintas)
+    }
+
     useEffect(()=>{
         let desp = JSON.parse(localStorage.getItem('sense_db'))
         desp = desp ?? []
+        setCategorias([])
         setDespesas(desp)
         setMensagem(location.state && location.state.mensagem )
         setPagina('Despesas')
+        getCategorias()
     },[])
 
     useEffect(()=>{
@@ -73,6 +91,25 @@ function Transacoes({setPagina}){
 
 
     },[despesas])
+
+    useEffect(()=>{
+        
+        let desp = JSON.parse(localStorage.getItem('sense_db'))
+        desp = desp ?? []
+        if(categoria == ''){
+            filtrar(filtroPrincipal)
+        }else{
+            if(filtroPrincipal == 'todas'){
+                desp = desp.filter((d)=> d.categoria.toLowerCase() == categoria.toLowerCase())
+                setDespesas(desp)
+            }else{
+                desp = desp.filter((d)=> d.tipo.toLowerCase() == filtroPrincipal.toLowerCase() && d.categoria.toLowerCase() == categoria.toLowerCase())
+                setDespesas(desp)
+            }
+        }
+        
+        
+    },[categoria])
 
     return (
         <div className={style.transacoes}>
@@ -104,6 +141,16 @@ function Transacoes({setPagina}){
             </div>
 
             <div className={style.areaAcoes}>
+                <div className={style.btnFiltroCategoria} >
+                    <select name="" id="" onChange={(e)=>{setCategoria(e.target.value)}}>
+                        <option value="">Selecione uma categoria</option>
+                        {  categorias.length > 0 &&
+                            categorias.map((c,indx)=>(
+                                <option value={c} key={indx}>{c}</option>
+                            ))
+                        }
+                    </select>
+                </div>
                 <Link to="/despesas/create" >
                     <FaPlus/>
                     Adicionar Transação
@@ -128,7 +175,7 @@ function Transacoes({setPagina}){
                         ))
                     
                 }
-                {despesas.length == 0 && <h3>Nenhuma transação cadastrada</h3>}
+                {despesas.length == 0 && <h3>Nenhuma transação encontrada</h3>}
                 
             </div>
       
