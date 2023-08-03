@@ -24,7 +24,7 @@ function NovaDespesa({setPagina}){
     function salvarTransacao(e){
         e.preventDefault()
         let todosCamposPreenchidos = Object.values(transacao).every((valor) => valor !== null && valor !== undefined && valor !== '');
-        if(!todosCamposPreenchidos){
+        if(!todosCamposPreenchidos || parseFloat(transacao.valor) <= 0){
             setMensagem('Preencha todos os campos corretamente')
             setTimeout(()=>{
                 setMensagem(false)
