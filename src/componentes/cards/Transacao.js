@@ -9,7 +9,17 @@ function Transacao({id,titulo,tipo,categoria,valor,data,HandleBtnExcluir}){
     return (
         <div className={`${style.cardContainer} ${tipo === 'Despesa' ? style.saida : style.entrada}`}>
             <div className={style.icone}>
-                <img src="/img/carrinho_icone.png" alt="" />
+                {
+                    tipo == 'Despesa' ? (
+                        <img src="/img/carrinho_icone.png" alt="" />
+                    )
+                    :
+                    (
+                        <img src="/img/moedas_icone.png" alt="" />
+                    )
+            
+                }
+                
             </div>
             <div className={style.informacoesTransacao}>
                 <span>{data}</span>
@@ -17,7 +27,11 @@ function Transacao({id,titulo,tipo,categoria,valor,data,HandleBtnExcluir}){
                 <p>{categoria}</p>
                 <p>{tipo}</p>
             </div>
-            <span className={style.valor}>R${parseFloat(valor.replace(',','.')).toFixed(2).toString().replace('.',',')}</span>
+            <span className={style.valor}>
+                {tipo == 'Despesa' ?('-') : '+'}
+                R$
+                {parseFloat(valor.replace(',','.')).toFixed(2).toString().replace('.',',')}
+            </span>
             <Link to={`/transacao/editar/${id}`} className={style.btnEditar}><FaPencil/></Link>
             <button onClick={()=>{HandleBtnExcluir(id)}} className={style.btnExcluir}><FaTrashCan/></button>
         </div>

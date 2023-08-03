@@ -101,9 +101,6 @@ function Transacoes({setPagina}){
             setTotalSaldo(saldo.replace('.',','))
 
         }
-      
-
-
     },[despesas])
 
     useEffect(()=>{

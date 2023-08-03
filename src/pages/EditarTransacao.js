@@ -12,10 +12,19 @@ function EditarTransacao({setPagina}){
     const [transacao,setTransacao] = useState()
     const [showForm,setShowForm] = useState()
     const navigate = useNavigate()
+    const [mensagem,setMensagem] = useState('')
 
 
     function editarSave(e){
         e.preventDefault()
+        let todosCamposPreenchidos = Object.values(transacao).every((valor) => valor !== null && valor !== undefined && valor !== '');
+        if(!todosCamposPreenchidos){
+            setMensagem('Preencha todos os campos corretamente')
+            setTimeout(()=>{
+                setMensagem(false)
+            },3000)
+            return 0
+        }
         let transacoes = JSON.parse(localStorage.getItem('sense_db'))
         transacoes = transacoes.filter((t)=> t.id != transacao.id)
 
@@ -37,6 +46,8 @@ function EditarTransacao({setPagina}){
     },[])
     return (
         <div className={style.container}>
+            <Mensagem texto={mensagem} status="error"></Mensagem>
+            <h4 className={style.tituloPagina}>Edição de transação</h4>
             {showForm &&
                 <FormTransacao transacao={transacao} setTransacao={setTransacao} handleSubmit = {editarSave}></FormTransacao>
             }

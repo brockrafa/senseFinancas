@@ -12,7 +12,7 @@ function NovaDespesa({setPagina}){
     useEffect(()=>{
         setTransacao({
             titulo:'',
-            tipo:'Despesa',
+            tipo:'',
             categoria:'',
             valor:''
         })
@@ -25,7 +25,7 @@ function NovaDespesa({setPagina}){
         e.preventDefault()
         let todosCamposPreenchidos = Object.values(transacao).every((valor) => valor !== null && valor !== undefined && valor !== '');
         if(!todosCamposPreenchidos){
-            setMensagem('Preencha todos os campos')
+            setMensagem('Preencha todos os campos corretamente')
             setTimeout(()=>{
                 setMensagem(false)
             },3000)
@@ -55,6 +55,8 @@ function NovaDespesa({setPagina}){
     return (
         <div className={style.container}>
             <Mensagem texto={mensagem} status="error"></Mensagem>
+
+            <h4 className={style.tituloPagina}>Criar nova transação</h4>
             <form>
                 <div className={style.formGroup}>
                     <label htmlFor="">Título</label>
