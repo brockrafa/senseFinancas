@@ -43,25 +43,35 @@ function Transacoes({setPagina}){
         if(!id){
             return false
         }
-        let desp = despesas.filter((d)=>{ return d.id != id})
+        let desp = getTransacoes()
+        desp = desp.filter((d)=>{ return d.id != id})
         setDespesas(desp)
         localStorage.setItem('sense_db',JSON.stringify(desp))
+        filtrar(filtroPrincipal)
         setMensagem('Transação excluida com sucesso')
     }
 
+    function capitalize(word) {
+        return word.charAt(0).toUpperCase() + word.slice(1);
+      }
+
     function getCategorias(){
-        let desp = JSON.parse(localStorage.getItem('sense_db'))
-        desp = desp ?? []
+        let desp = getTransacoes()
         if(desp.length > 0){
-            const categoriasDistintas = [...new Set(desp.map(item => item.categoria))];
+            const categoriasDistintas = [...new Set(desp.map(item => capitalize(item.categoria)))];
             setCategorias(categoriasDistintas)
         }
         
     }
 
-    useEffect(()=>{
+    function getTransacoes(){
         let desp = JSON.parse(localStorage.getItem('sense_db'))
         desp = desp ?? []
+        return desp
+    }
+
+    useEffect(()=>{
+        let desp = getTransacoes()
         setCategorias([])
         setDespesas(desp)
         setMensagem(location.state && location.state.mensagem )
@@ -97,9 +107,7 @@ function Transacoes({setPagina}){
     },[despesas])
 
     useEffect(()=>{
-        
-        let desp = JSON.parse(localStorage.getItem('sense_db'))
-        desp = desp ?? []
+        let desp = getTransacoes()
         if(categoria == ''){
             filtrar(filtroPrincipal)
         }else{

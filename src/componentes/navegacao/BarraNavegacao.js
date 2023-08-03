@@ -12,7 +12,7 @@ function BarraNavegacao({pagina}){
             </div>
             <ul className={style.menu}>
                 <li>
-                    <Link to="/" className={`${pagina == 'Despesas' ? style.active : ''}`}>Minhas despesas</Link>
+                    <Link to="/" className={`${pagina == 'Despesas' ? style.active : ''}`}>Transações</Link>
                 </li>
                 <li>
                     <Link to="/despesas/create" className={`${pagina == 'novaDespesa' ? style.active : ''}`}>Nova despesa</Link>

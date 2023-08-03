@@ -57,7 +57,7 @@ function NovaDespesa({setPagina}){
             <Mensagem texto={mensagem} status="error"></Mensagem>
             <form>
                 <div className={style.formGroup}>
-                    <label htmlFor="">Titulo</label>
+                    <label htmlFor="">Título</label>
                     <input onChange={(e)=>{transacao.titulo = e.target.value}} type="text" placeholder='Ex: Mercado'/>
                 </div>
                 <div className={style.formGroup}>

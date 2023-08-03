@@ -17,7 +17,7 @@ function Transacao({id,titulo,tipo,categoria,valor,data,HandleBtnExcluir}){
                 <p>{categoria}</p>
                 <p>{tipo}</p>
             </div>
-            <span className={style.valor}>R${parseFloat(valor).toFixed(2).toString().replace('.',',')}</span>
+            <span className={style.valor}>R${parseFloat(valor.replace(',','.')).toFixed(2).toString().replace('.',',')}</span>
             <Link to={`/transacao/editar/${id}`} className={style.btnEditar}><FaPencil/></Link>
             <button onClick={()=>{HandleBtnExcluir(id)}} className={style.btnExcluir}><FaTrashCan/></button>
         </div>

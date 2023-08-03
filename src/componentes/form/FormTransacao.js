@@ -10,7 +10,7 @@ function FormTransacao({transacao,setTransacao,handleSubmit}){
     return (
         <form>
             <div className={style.formGroup}>
-                <label htmlFor="">Titulo</label>
+                <label htmlFor="">Título</label>
                 <input onChange={handleOnChange} type="text" id='titulo' name='titulo' placeholder='Ex: Mercado' value={transacao.titulo ?? ''}/>
             </div>
             <div className={style.formGroup}>
