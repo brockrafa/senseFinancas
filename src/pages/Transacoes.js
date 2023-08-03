@@ -43,12 +43,15 @@ function Transacoes({setPagina}){
         if(!id){
             return false
         }
-        let desp = getTransacoes()
-        desp = desp.filter((d)=>{ return d.id != id})
-        setDespesas(desp)
-        localStorage.setItem('sense_db',JSON.stringify(desp))
-        filtrar(filtroPrincipal)
-        setMensagem('Transação excluida com sucesso')
+        const temCerteza = window.confirm("Tem certeza que deseja excluir esta transação?");
+        if (temCerteza) {
+            let desp = getTransacoes()
+            desp = desp.filter((d)=>{ return d.id != id})
+            setDespesas(desp)
+            localStorage.setItem('sense_db',JSON.stringify(desp))
+            filtrar(filtroPrincipal)
+            setMensagem('Transação excluida com sucesso')
+        }
     }
 
     function capitalize(word) {

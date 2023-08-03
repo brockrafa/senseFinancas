@@ -28,7 +28,7 @@ function Transacao({id,titulo,tipo,categoria,valor,data,HandleBtnExcluir}){
                 <p>{tipo}</p>
             </div>
             <span className={style.valor}>
-                {tipo == 'Despesa' ?('-') : '+'}
+                {tipo == 'Despesa' ?('- ') : '+ '}
                 R$
                 {parseFloat(valor.replace(',','.')).toFixed(2).toString().replace('.',',')}
             </span>
