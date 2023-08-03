@@ -51,8 +51,12 @@ function Transacoes({setPagina}){
 
     function getCategorias(){
         let desp = JSON.parse(localStorage.getItem('sense_db'))
-        const categoriasDistintas = [...new Set(desp.map(item => item.categoria))];
-        setCategorias(categoriasDistintas)
+        desp = desp ?? []
+        if(desp.length > 0){
+            const categoriasDistintas = [...new Set(desp.map(item => item.categoria))];
+            setCategorias(categoriasDistintas)
+        }
+        
     }
 
     useEffect(()=>{
