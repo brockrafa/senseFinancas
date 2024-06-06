@@ -20,6 +20,6 @@ Obs: As informações estão sendo guardadas no local storage do navegador como 
 
 ## Demonstração
 <p float="left">
-  <img style="width:450px" src="/demo/pagina_2.png">
   <img style="width:450px" src="/demo/pagina_1.png">
+  <img style="width:450px" src="/demo/pagina_2.png">
 </p>
